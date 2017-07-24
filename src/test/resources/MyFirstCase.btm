@@ -1,0 +1,18 @@
+ RULE hello world
+ CLASS ByteManTest
+ METHOD test
+ AT EXIT
+ IF true
+ DO
+ debug("Hello world!")
+ ENDRULE
+
+
+  RULE hello world ENTRY
+  CLASS ByteManTest
+  METHOD test
+  AT ENTRY
+  IF true
+  DO
+  debug("Hello world ENTRY!")
+  ENDRULE

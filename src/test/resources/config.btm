@@ -1,0 +1,26 @@
+RULE create repeatable rendezvous for 2 parties
+CLASS BytemanTwo
+METHOD <init>
+AT EXIT
+IF true
+DO
+debug("create two rendezvous when BytemmanTwo init");createRendezvous("my test 1", 2, true)
+ENDRULE
+
+RULE make backgroud One thread rendezvous at ready
+CLASS ImpOne
+METHOD methodOne
+AT ENTRY
+IF isRendezvous("my test 1", 2)
+DO
+debug("make backgroud thread rendezvous at ready");rendezvous("my test 1");
+ENDRULE
+
+RULE make backgroud Two thread rendezvous at ready
+CLASS ImpTwo
+METHOD methodOne
+AT ENTRY
+IF isRendezvous("my test 1", 2)
+DO
+debug("make backgroud thread rendezvous at ready");rendezvous("my test 1");
+ENDRULE
